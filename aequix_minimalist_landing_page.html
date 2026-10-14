@@ -1,488 +1,203 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AEQUIX — High-Reliability Software &amp; Systems Engineering</title>
-
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- Fonts: Inter & JetBrains Mono -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;450;500;600;700&family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
-
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
-            mono: ['"JetBrains Mono"', 'monospace'],
-          },
-          colors: {
-            bone: {
-              50: '#FFFFFF',
-              100: '#FAF9F6',
-              200: '#F5F5F3',
-              300: '#EBEBE8',
-              400: '#DEDDD9',
-            },
-            graphite: {
-              950: '#0A0A0B',
-              900: '#121214',
-              850: '#18181B',
-              800: '#27272A',
-              700: '#3F3F46',
-              400: '#71717A',
-              300: '#A1A1AA',
-            }
-          }
-        }
-      }
-    }
-  </script>
-
+  <title>Aequix | Software Solutions & Digital Innovation</title>
   <style>
-    /* Hairline borders and strict Swiss grid aesthetic */
-    .hairline-border {
-      border-color: rgba(0, 0, 0, 0.08);
-    }
-    .dark .hairline-border {
-      border-color: rgba(255, 255, 255, 0.08);
-    }
-
-    /* Subdued selection */
-    ::selection {
-      background-color: #0A0A0B;
-      color: #FAF9F6;
-    }
-    .dark ::selection {
-      background-color: #FAF9F6;
-      color: #0A0A0B;
+    :root {
+      --primary: #2563eb;
+      --primary-hover: #1d4ed8;
+      --bg-dark: #0f172a;
+      --bg-card: #1e293b;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --border: #334155;
     }
 
-    /* Micro line-height and typography resets */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
     body {
-      text-rendering: optimizeLegibility;
-      -webkit-font-smoothing: antialiased;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 8%;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      background-color: rgba(15, 23, 42, 0.9);
+      backdrop-filter: blur(8px);
+      z-index: 100;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: #fff;
+    }
+
+    .logo span {
+      color: var(--primary);
+    }
+
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      margin-left: 24px;
+      font-size: 0.95rem;
+      transition: color 0.2s ease;
+    }
+
+    nav a:hover {
+      color: var(--text-main);
+    }
+
+    .hero {
+      text-align: center;
+      padding: 100px 20px 80px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .hero .badge {
+      display: inline-block;
+      padding: 6px 14px;
+      border-radius: 999px;
+      background-color: rgba(37, 99, 235, 0.15);
+      color: #60a5fa;
+      font-size: 0.85rem;
+      font-weight: 500;
+      margin-bottom: 24px;
+      border: 1px solid rgba(37, 99, 235, 0.3);
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      color: var(--text-muted);
+      margin-bottom: 36px;
+    }
+
+    .cta-btn {
+      display: inline-block;
+      padding: 14px 28px;
+      background-color: var(--primary);
+      color: #fff;
+      font-weight: 600;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: background-color 0.2s ease;
+    }
+
+    .cta-btn:hover {
+      background-color: var(--primary-hover);
+    }
+
+    .features {
+      padding: 60px 8% 100px;
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+    }
+
+    .card {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 32px 24px;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: var(--primary);
+    }
+
+    .card h3 {
+      font-size: 1.25rem;
+      margin-bottom: 12px;
+      color: #fff;
+    }
+
+    .card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 30px 8%;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+      .hero p {
+        font-size: 1rem;
+      }
     }
   </style>
 </head>
+<body>
 
-<body class="bg-bone-100 text-graphite-950 dark:bg-graphite-950 dark:text-bone-100 font-sans transition-colors duration-200 min-h-screen">
-
-  <!-- ==================== STICKY MINIMAL HEADER ==================== -->
-  <header class="sticky top-0 z-40 bg-bone-100/90 dark:bg-graphite-950/90 backdrop-blur-md border-b hairline-border">
-    <div class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
-      
-      <!-- Wordmark & Location Pill -->
-      <div class="flex items-center gap-4">
-        <a href="#" class="font-mono text-sm tracking-widest font-semibold uppercase hover:opacity-70 transition-opacity">
-          AEQUIX
-        </a>
-        <span class="hidden sm:inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[11px] font-mono border hairline-border text-graphite-700 dark:text-graphite-300 bg-bone-200/60 dark:bg-graphite-900/60">
-          <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
-          <span>HYD, IN &bull; Q4 Avail.</span>
-        </span>
-      </div>
-
-      <!-- Navigation & Controls -->
-      <div class="flex items-center gap-6 text-xs font-mono">
-        <nav class="hidden md:flex items-center gap-6 text-graphite-700 dark:text-graphite-300">
-          <a href="#focus" class="hover:text-graphite-950 dark:hover:text-white transition-colors">/focus</a>
-          <a href="#manifesto" class="hover:text-graphite-950 dark:hover:text-white transition-colors">/manifesto</a>
-          <a href="#specs" class="hover:text-graphite-950 dark:hover:text-white transition-colors">/specs</a>
-          <a href="#connect" class="hover:text-graphite-950 dark:hover:text-white transition-colors">/connect</a>
-        </nav>
-
-        <div class="flex items-center gap-2 pl-4 border-l hairline-border">
-          <!-- Dark / Light Theme Toggle -->
-          <button id="themeToggleBtn" aria-label="Toggle theme" onclick="toggleTheme()" class="p-1.5 rounded-md hover:bg-bone-300/50 dark:hover:bg-graphite-850 text-graphite-700 dark:text-graphite-300 transition-colors">
-            <!-- Sun icon -->
-            <svg id="sunIcon" class="w-4 h-4 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <circle cx="12" cy="12" r="4" stroke-width="1.8"/>
-              <path stroke-width="1.8" d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>
-            </svg>
-            <!-- Moon icon -->
-            <svg id="moonIcon" class="w-4 h-4 block dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/>
-            </svg>
-          </button>
-        </div>
-      </div>
-
-    </div>
+  <header>
+    <div class="logo">AEQUIX<span>.</span></div>
+    <nav>
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
   </header>
 
-  <!-- ==================== MAIN CONTENT WRAPPER ==================== -->
-  <main class="max-w-5xl mx-auto px-6">
+  <section class="hero">
+    <div class="badge">Next-Generation Engineering</div>
+    <h1>Building Scalable Software for Modern Enterprises</h1>
+    <p>Aequix specializes in delivering robust cloud architectures, intelligent integrations, and enterprise-grade software solutions.</p>
+    <a href="#contact" class="cta-btn">Get in Touch</a>
+  </section>
 
-    <!-- ==================== SECTION 1: HERO ==================== -->
-    <section class="pt-24 sm:pt-36 pb-20 border-b hairline-border">
-      <div class="max-w-3xl">
-        <div class="font-mono text-xs uppercase tracking-widest text-graphite-700 dark:text-graphite-400 mb-6">
-          System Architecture &bull; Engineering Studio
-        </div>
-        
-        <h1 class="text-3xl sm:text-5xl lg:text-5xl font-medium tracking-tight text-graphite-950 dark:text-bone-50 leading-[1.15] mb-8">
-          We engineer high-reliability software, deterministic data platforms, and lean distributed systems.
-        </h1>
-
-        <p class="text-base sm:text-lg text-graphite-700 dark:text-graphite-300 leading-relaxed font-normal max-w-2xl mb-10">
-          Disciplined systems design over transient trends. We partner with technology leadership to build fault-tolerant backends, real-time data pipelines, and infrastructure that endures.
-        </p>
-
-        <div class="flex flex-wrap items-center gap-4 text-xs font-mono">
-          <a href="#connect" class="px-5 py-2.5 rounded-lg bg-graphite-950 dark:bg-bone-50 text-bone-50 dark:text-graphite-950 font-medium hover:opacity-90 transition-opacity">
-            Engage AEQUIX &rarr;
-          </a>
-          <button onclick="copyEmailToClipboard()" class="px-4 py-2.5 rounded-lg border hairline-border hover:bg-bone-200 dark:hover:bg-graphite-900 transition-colors flex items-center gap-2 text-graphite-800 dark:text-graphite-300">
-            <span id="copyBtnText">hello@aequix.io</span>
-            <svg class="w-3.5 h-3.5 opacity-60" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2"/></svg>
-          </button>
-        </div>
-      </div>
-    </section>
-
-    <!-- ==================== SECTION 2: PRACTICE AREAS / FOCUS ==================== -->
-    <section id="focus" class="py-20 border-b hairline-border">
-      <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
-        
-        <div class="md:col-span-4">
-          <span class="font-mono text-xs text-graphite-700 dark:text-graphite-400 uppercase tracking-widest block mb-2">[ 01 &bull; PRACTICE ]</span>
-          <h2 class="text-xl font-medium tracking-tight text-graphite-950 dark:text-bone-50">Capabilities</h2>
-          <p class="text-xs text-graphite-700 dark:text-graphite-400 mt-2 font-mono leading-relaxed">
-            Deliberate focus areas where we deliver verified mathematical performance.
-          </p>
-        </div>
-
-        <div class="md:col-span-8 space-y-6">
-          
-          <!-- Item 1 -->
-          <div class="p-5 rounded-xl border hairline-border bg-bone-50/50 dark:bg-graphite-900/40 hover:border-graphite-400 dark:hover:border-graphite-700 transition-colors">
-            <div class="flex items-center justify-between mb-2">
-              <h3 class="text-sm font-semibold text-graphite-950 dark:text-bone-50">Distributed Cloud Architecture</h3>
-              <span class="font-mono text-[11px] text-graphite-700 dark:text-graphite-400">AWS / GCP / K8s</span>
-            </div>
-            <p class="text-xs text-graphite-700 dark:text-graphite-300 leading-relaxed font-sans">
-              Zero-spoilage multi-region deployments, self-healing orchestration, and deterministic auto-scaling fabrics built with immutable Infrastructure as Code.
-            </p>
-          </div>
-
-          <!-- Item 2 -->
-          <div class="p-5 rounded-xl border hairline-border bg-bone-50/50 dark:bg-graphite-900/40 hover:border-graphite-400 dark:hover:border-graphite-700 transition-colors">
-            <div class="flex items-center justify-between mb-2">
-              <h3 class="text-sm font-semibold text-graphite-950 dark:text-bone-50">Data Streaming &amp; Event Mesh</h3>
-              <span class="font-mono text-[11px] text-graphite-700 dark:text-graphite-400">Kafka / Flink / Snowflake</span>
-            </div>
-            <p class="text-xs text-graphite-700 dark:text-graphite-300 leading-relaxed font-sans">
-              High-throughput event pipelines, real-time stream aggregation, and schema governance designed to eliminate data drift across enterprise tenants.
-            </p>
-          </div>
-
-          <!-- Item 3 -->
-          <div class="p-5 rounded-xl border hairline-border bg-bone-50/50 dark:bg-graphite-900/40 hover:border-graphite-400 dark:hover:border-graphite-700 transition-colors">
-            <div class="flex items-center justify-between mb-2">
-              <h3 class="text-sm font-semibold text-graphite-950 dark:text-bone-50">Enterprise Software Modernization</h3>
-              <span class="font-mono text-[11px] text-graphite-700 dark:text-graphite-400">Go / Rust / TypeScript</span>
-            </div>
-            <p class="text-xs text-graphite-700 dark:text-graphite-300 leading-relaxed font-sans">
-              Surgical refactoring of legacy monoliths into type-safe microservices with strict telemetry boundaries and end-to-end auditability.
-            </p>
-          </div>
-
-          <!-- Item 4 -->
-          <div class="p-5 rounded-xl border hairline-border bg-bone-50/50 dark:bg-graphite-900/40 hover:border-graphite-400 dark:hover:border-graphite-700 transition-colors">
-            <div class="flex items-center justify-between mb-2">
-              <h3 class="text-sm font-semibold text-graphite-950 dark:text-bone-50">Deterministic AI &amp; Vector Search</h3>
-              <span class="font-mono text-[11px] text-graphite-700 dark:text-graphite-400">Embeddings / RAG</span>
-            </div>
-            <p class="text-xs text-graphite-700 dark:text-graphite-300 leading-relaxed font-sans">
-              Domain-bound semantic retrieval engines with strict enterprise security guardrails, low-latency token caching, and deterministic validation layers.
-            </p>
-          </div>
-
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ==================== SECTION 3: MANIFESTO ==================== -->
-    <section id="manifesto" class="py-20 border-b hairline-border">
-      <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
-        
-        <div class="md:col-span-4">
-          <span class="font-mono text-xs text-graphite-700 dark:text-graphite-400 uppercase tracking-widest block mb-2">[ 02 &bull; MANIFESTO ]</span>
-          <h2 class="text-xl font-medium tracking-tight text-graphite-950 dark:text-bone-50">Engineering Principles</h2>
-          <p class="text-xs text-graphite-700 dark:text-graphite-400 mt-2 font-mono leading-relaxed">
-            The rules governing every commit, schema, and architectural decision.
-          </p>
-        </div>
-
-        <div class="md:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-8 font-sans">
-          
-          <div>
-            <div class="font-mono text-xs text-graphite-700 dark:text-graphite-400 mb-2">01. CLARITY OVER COMPLEXITY</div>
-            <h4 class="text-sm font-semibold text-graphite-950 dark:text-bone-100 mb-2">Simplicity is a Feature</h4>
-            <p class="text-xs text-graphite-700 dark:text-graphite-300 leading-relaxed">
-              We reject resume-driven architecture. A system that can be reasoned about by a single engineer in a crisis is inherently superior to an ornate distributed labyrinth.
-            </p>
-          </div>
-
-          <div>
-            <div class="font-mono text-xs text-graphite-700 dark:text-graphite-400 mb-2">02. DETERMINISTIC STATE</div>
-            <h4 class="text-sm font-semibold text-graphite-950 dark:text-bone-100 mb-2">Predictable Behavior</h4>
-            <p class="text-xs text-graphite-700 dark:text-graphite-300 leading-relaxed">
-              Idempotent APIs and immutability. If a payload is reprocessed three times, the final state must remain mathematically identical with zero silent regressions.
-            </p>
-          </div>
-
-          <div>
-            <div class="font-mono text-xs text-graphite-700 dark:text-graphite-400 mb-2">03. ZERO-COMPROMISE LATENCY</div>
-            <h4 class="text-sm font-semibold text-graphite-950 dark:text-bone-100 mb-2">Respect Machine Cycles</h4>
-            <p class="text-xs text-graphite-700 dark:text-graphite-300 leading-relaxed">
-              Software bloat is technical friction. We optimize queries at the storage tier, cache aggressively at the edge, and measure latency at the 99th percentile.
-            </p>
-          </div>
-
-          <div>
-            <div class="font-mono text-xs text-graphite-700 dark:text-graphite-400 mb-2">04. DURABLE LONGEVITY</div>
-            <h4 class="text-sm font-semibold text-graphite-950 dark:text-bone-100 mb-2">Built for Decades</h4>
-            <p class="text-xs text-graphite-700 dark:text-graphite-300 leading-relaxed">
-              Standards over hype. We prioritize portable protocols, open specifications, and strictly-typed contracts that will remain readable and operable years from now.
-            </p>
-          </div>
-
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ==================== SECTION 4: OPERATIONAL SPECS / TABLE ==================== -->
-    <section id="specs" class="py-20 border-b hairline-border">
-      <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
-        
-        <div class="md:col-span-4">
-          <span class="font-mono text-xs text-graphite-700 dark:text-graphite-400 uppercase tracking-widest block mb-2">[ 03 &bull; BENCHMARKS ]</span>
-          <h2 class="text-xl font-medium tracking-tight text-graphite-950 dark:text-bone-50">Operational Specs</h2>
-          <p class="text-xs text-graphite-700 dark:text-graphite-400 mt-2 font-mono leading-relaxed">
-            Standard baseline service-level thresholds maintained across deployed systems.
-          </p>
-        </div>
-
-        <div class="md:col-span-8">
-          <div class="border hairline-border rounded-xl overflow-hidden font-mono text-xs">
-            
-            <div class="grid grid-cols-12 bg-bone-200/60 dark:bg-graphite-900/60 p-3.5 border-b hairline-border font-semibold text-graphite-800 dark:text-graphite-300">
-              <div class="col-span-6 sm:col-span-5">PARAMETER</div>
-              <div class="col-span-3 sm:col-span-4">STANDARD TARGET</div>
-              <div class="col-span-3 text-right">TOLERANCE</div>
-            </div>
-
-            <div class="divide-y hairline-border bg-bone-50 dark:bg-graphite-950">
-              
-              <div class="grid grid-cols-12 p-3.5 items-center">
-                <div class="col-span-6 sm:col-span-5 text-graphite-950 dark:text-bone-100 font-medium">Core Availability</div>
-                <div class="col-span-3 sm:col-span-4 text-emerald-600 dark:text-emerald-400 font-semibold">99.99% Uptime</div>
-                <div class="col-span-3 text-right text-graphite-700 dark:text-graphite-400">&lt; 4.3 min/mo</div>
-              </div>
-
-              <div class="grid grid-cols-12 p-3.5 items-center">
-                <div class="col-span-6 sm:col-span-5 text-graphite-950 dark:text-bone-100 font-medium">p99 Edge Latency</div>
-                <div class="col-span-3 sm:col-span-4 text-graphite-950 dark:text-bone-100">&lt; 35ms Global</div>
-                <div class="col-span-3 text-right text-graphite-700 dark:text-graphite-400">Strict cap</div>
-              </div>
-
-              <div class="grid grid-cols-12 p-3.5 items-center">
-                <div class="col-span-6 sm:col-span-5 text-graphite-950 dark:text-bone-100 font-medium">Streaming Ingestion</div>
-                <div class="col-span-3 sm:col-span-4 text-graphite-950 dark:text-bone-100">1.5M+ events/sec</div>
-                <div class="col-span-3 text-right text-graphite-700 dark:text-graphite-400">Zero drop</div>
-              </div>
-
-              <div class="grid grid-cols-12 p-3.5 items-center">
-                <div class="col-span-6 sm:col-span-5 text-graphite-950 dark:text-bone-100 font-medium">Encryption Standard</div>
-                <div class="col-span-3 sm:col-span-4 text-graphite-950 dark:text-bone-100">mTLS + AES-256</div>
-                <div class="col-span-3 text-right text-graphite-700 dark:text-graphite-400">Enforced</div>
-              </div>
-
-              <div class="grid grid-cols-12 p-3.5 items-center">
-                <div class="col-span-6 sm:col-span-5 text-graphite-950 dark:text-bone-100 font-medium">Mean Time to Recovery</div>
-                <div class="col-span-3 sm:col-span-4 text-graphite-950 dark:text-bone-100">&lt; 180 Seconds</div>
-                <div class="col-span-3 text-right text-graphite-700 dark:text-graphite-400">Auto-heal</div>
-              </div>
-
-            </div>
-
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ==================== SECTION 5: CONTACT & INQUIRY ==================== -->
-    <section id="connect" class="py-20 border-b hairline-border">
-      <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
-        
-        <div class="md:col-span-4">
-          <span class="font-mono text-xs text-graphite-700 dark:text-graphite-400 uppercase tracking-widest block mb-2">[ 04 &bull; INITIATE ]</span>
-          <h2 class="text-xl font-medium tracking-tight text-graphite-950 dark:text-bone-50">Connect</h2>
-          <p class="text-xs text-graphite-700 dark:text-graphite-400 mt-2 font-mono leading-relaxed">
-            Direct dialogue with our engineering leads. No intermediaries.
-          </p>
-
-          <div class="mt-8 font-mono text-xs space-y-3">
-            <div>
-              <span class="text-graphite-700 dark:text-graphite-400 block mb-0.5">LOCATION</span>
-              <span class="text-graphite-950 dark:text-bone-100 font-medium">Hyderabad, Telangana, IN</span>
-            </div>
-            <div>
-              <span class="text-graphite-700 dark:text-graphite-400 block mb-0.5">DIRECT CHANNEL</span>
-              <button onclick="copyEmailToClipboard()" class="hover:underline text-graphite-950 dark:text-bone-100">hello@aequix.io</button>
-            </div>
-            <div>
-              <span class="text-graphite-700 dark:text-graphite-400 block mb-0.5">RESPONSE SLA</span>
-              <span class="text-graphite-950 dark:text-bone-100">&le; 24 Hours</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="md:col-span-8">
-          
-          <!-- Terminal-Style Form Container -->
-          <div class="p-6 sm:p-8 rounded-xl border hairline-border bg-bone-50 dark:bg-graphite-900/60">
-            <form id="inquiryForm" onsubmit="handleInquirySubmit(event)" class="space-y-5">
-              
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div>
-                  <label for="name" class="block font-mono text-[11px] uppercase tracking-wider text-graphite-700 dark:text-graphite-400 mb-1.5">Identifier / Name *</label>
-                  <input type="text" id="name" required placeholder="Elena Rostova" class="w-full bg-bone-100 dark:bg-graphite-950 border hairline-border rounded-lg px-3.5 py-2.5 text-xs text-graphite-950 dark:text-bone-100 placeholder-graphite-400 focus:outline-none focus:ring-1 focus:ring-graphite-950 dark:focus:ring-bone-50 transition-shadow">
-                </div>
-
-                <div>
-                  <label for="email" class="block font-mono text-[11px] uppercase tracking-wider text-graphite-700 dark:text-graphite-400 mb-1.5">Corporate Email *</label>
-                  <input type="email" id="email" required placeholder="elena@company.com" class="w-full bg-bone-100 dark:bg-graphite-950 border hairline-border rounded-lg px-3.5 py-2.5 text-xs text-graphite-950 dark:text-bone-100 placeholder-graphite-400 focus:outline-none focus:ring-1 focus:ring-graphite-950 dark:focus:ring-bone-50 transition-shadow">
-                </div>
-              </div>
-
-              <div>
-                <label for="practiceArea" class="block font-mono text-[11px] uppercase tracking-wider text-graphite-700 dark:text-graphite-400 mb-1.5">Practice Focus</label>
-                <select id="practiceArea" class="w-full bg-bone-100 dark:bg-graphite-950 border hairline-border rounded-lg px-3.5 py-2.5 text-xs text-graphite-950 dark:text-bone-100 focus:outline-none focus:ring-1 focus:ring-graphite-950 dark:focus:ring-bone-50 transition-shadow font-mono">
-                  <option value="Cloud Architecture">Cloud Architecture &amp; High Availability</option>
-                  <option value="Data Pipelines">Data Pipelines &amp; Kafka Mesh</option>
-                  <option value="Systems Modernization">Systems Modernization (Go/Rust/TS)</option>
-                  <option value="AI Vector Architecture">AI Vector Architecture &amp; RAG</option>
-                </select>
-              </div>
-
-              <div>
-                <label for="brief" class="block font-mono text-[11px] uppercase tracking-wider text-graphite-700 dark:text-graphite-400 mb-1.5">System Specification / Brief *</label>
-                <textarea id="brief" rows="4" required placeholder="Describe current throughput bottlenecks, scaling objectives, or cloud migration parameters..." class="w-full bg-bone-100 dark:bg-graphite-950 border hairline-border rounded-lg px-3.5 py-2.5 text-xs text-graphite-950 dark:text-bone-100 placeholder-graphite-400 focus:outline-none focus:ring-1 focus:ring-graphite-950 dark:focus:ring-bone-50 transition-shadow leading-relaxed"></textarea>
-              </div>
-
-              <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-2">
-                <span class="text-[11px] font-mono text-graphite-700 dark:text-graphite-400">
-                  Strict NDA applies to all submissions.
-                </span>
-                <button type="submit" class="w-full sm:w-auto px-6 py-2.5 rounded-lg bg-graphite-950 dark:bg-bone-50 text-bone-50 dark:text-graphite-950 font-mono text-xs font-semibold hover:opacity-90 transition-opacity">
-                  Transmit Request &rarr;
-                </button>
-              </div>
-
-            </form>
-
-            <!-- Success Confirmation State -->
-            <div id="formSuccessMessage" class="hidden py-8 text-center space-y-2">
-              <div class="w-8 h-8 mx-auto rounded-full border hairline-border flex items-center justify-center font-mono text-xs text-emerald-600 dark:text-emerald-400 mb-2">
-                &check;
-              </div>
-              <h4 class="text-sm font-semibold text-graphite-950 dark:text-bone-100 font-mono">Transmission Confirmed</h4>
-              <p class="text-xs text-graphite-700 dark:text-graphite-400 font-mono max-w-sm mx-auto">
-                Your architectural brief has been routed to our principal engineer. We will respond within 24 hours.
-              </p>
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-    </section>
-
-  </main>
-
-  <!-- ==================== MINIMAL FOOTER ==================== -->
-  <footer class="py-12 text-xs font-mono text-graphite-700 dark:text-graphite-400">
-    <div class="max-w-5xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-      <div class="flex items-center gap-3">
-        <span class="font-bold text-graphite-950 dark:text-bone-100">AEQUIX</span>
-        <span>&bull;</span>
-        <span>&copy; 2026</span>
-        <span>&bull;</span>
-        <span>All Rights Reserved</span>
-      </div>
-
-      <div class="flex items-center gap-6">
-        <a href="#focus" class="hover:text-graphite-950 dark:hover:text-white transition-colors">Focus</a>
-        <a href="#manifesto" class="hover:text-graphite-950 dark:hover:text-white transition-colors">Manifesto</a>
-        <a href="#specs" class="hover:text-graphite-950 dark:hover:text-white transition-colors">Specs</a>
-        <a href="#connect" class="hover:text-graphite-950 dark:hover:text-white transition-colors">Connect</a>
-      </div>
+  <section class="features" id="services">
+    <div class="card">
+      <h3>Enterprise Cloud Systems</h3>
+      <p>Designing secure, fault-tolerant, and high-performance cloud applications tailored to scaling businesses.</p>
     </div>
+    <div class="card">
+      <h3>Intelligent Integrations</h3>
+      <p>Seamlessly bridging data pipelines, platforms, and modern APIs to optimize operational efficiency.</p>
+    </div>
+    <div class="card">
+      <h3>Custom Software Solutions</h3>
+      <p>End-to-end product architecture and development crafted with clean, maintainable, and modern code standards.</p>
+    </div>
+  </section>
+
+  <footer id="contact">
+    <p>&copy; 2026 Aequix. All rights reserved.</p>
   </footer>
-
-  <!-- ==================== JAVASCRIPT CONTROLLERS ==================== -->
-  <script>
-    // 1. Dark Mode / Light Mode Controller
-    function initTheme() {
-      const savedTheme = localStorage.getItem('aequix_theme');
-      if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-        document.documentElement.classList.add('dark');
-      } else {
-        document.documentElement.classList.remove('dark');
-      }
-    }
-
-    function toggleTheme() {
-      const isDark = document.documentElement.classList.toggle('dark');
-      localStorage.setItem('aequix_theme', isDark ? 'dark' : 'light');
-    }
-
-    initTheme();
-
-    // 2. Clipboard Copy Helper
-    function copyEmailToClipboard() {
-      const email = 'hello@aequix.io';
-      const tempInput = document.createElement('input');
-      tempInput.value = email;
-      document.body.appendChild(tempInput);
-      tempInput.select();
-      document.execCommand('copy');
-      document.body.removeChild(tempInput);
-
-      const btnText = document.getElementById('copyBtnText');
-      if (btnText) {
-        const originalText = btnText.innerText;
-        btnText.innerText = 'Copied to clipboard';
-        setTimeout(() => {
-          btnText.innerText = originalText;
-        }, 2000);
-      }
-    }
-
-    // 3. Form Submission Handling
-    function handleInquirySubmit(e) {
-      e.preventDefault();
-      const form = document.getElementById('inquiryForm');
-      const success = document.getElementById('formSuccessMessage');
-
-      // Hide form and display confirmation
-      form.classList.add('hidden');
-      success.classList.remove('hidden');
-    }
-  </script>
 
 </body>
 </html>
